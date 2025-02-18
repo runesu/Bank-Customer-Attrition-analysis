@@ -23,10 +23,27 @@ IsActiveMember
 0               73.128480  26.871520
 1               85.730926  14.269074
 
+Churn by Tenure Category:
+                    Stayed    Churned
+Tenure_Category                      
+Long_Term        80.307076  19.692924
+Mid_Term         79.235880  20.764120
+New_Customer     79.212674  20.787326
+
+Churn by EstimatedSalary Category:
+                             Stayed    Churned
+EstimatedSalary_Category                      
+High_Salary               79.765166  20.234834
+Low_Salary                80.065226  19.934774
+Medium_Salary             80.134017  19.865983
+Very_High_Salary          78.492872  21.507128
+
 === Hypothesis Testing Results ===
 Chi-Square Test for Age and Churn: p-value = 0.0000
 Chi-Square Test for Balance and Churn: p-value = 0.0000
 Chi-Square Test for Active Status and Churn: p-value = 0.0000
+Chi-Square Test for Tenure and Churn: p-value = 0.4219
+Chi-Square Test for EstimatedSalary and Churn: p-value = 0.4457
 
 === Conclusions ===
 Age has a statistically significant impact on churn.

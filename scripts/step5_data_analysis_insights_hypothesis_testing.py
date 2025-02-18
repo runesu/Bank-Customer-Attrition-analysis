@@ -33,6 +33,8 @@ def run_analysis(input_csv, output_file):
         churn_by_age = analyze_churn_by_category(df, 'Age_Category')
         churn_by_balance = analyze_churn_by_category(df, 'Balance_Category')
         churn_by_active_status = analyze_churn_by_category(df, 'IsActiveMember')
+        churn_by_tenure = analyze_churn_by_category(df, 'Tenure_Category') 
+        churn_by_EstimatedSalary = analyze_churn_by_category(df, 'EstimatedSalary_Category')
 
         f.write("Churn by Age Category:\n")
         f.write(churn_by_age.to_string() + "\n\n")
@@ -43,15 +45,25 @@ def run_analysis(input_csv, output_file):
         f.write("Churn by Active Member Status:\n")
         f.write(churn_by_active_status.to_string() + "\n\n")
 
+        f.write("Churn by Tenure Category:\n")
+        f.write(churn_by_tenure.to_string() + "\n\n")
+
+        f.write("Churn by EstimatedSalary Category:\n")
+        f.write(churn_by_EstimatedSalary.to_string() + "\n\n")
+
         # Hypothesis Testing
         p_value_age = perform_chi_square_test(df, 'Age_Category')
         p_value_balance = perform_chi_square_test(df, 'Balance_Category')
         p_value_active = perform_chi_square_test(df, 'IsActiveMember')
+        p_value_tenure = perform_chi_square_test(df, 'Tenure_Category')
+        p_value_estimatedSalary = perform_chi_square_test(df, 'EstimatedSalary_Category')
 
         f.write("=== Hypothesis Testing Results ===\n")
         f.write(f"Chi-Square Test for Age and Churn: p-value = {p_value_age:.4f}\n")
         f.write(f"Chi-Square Test for Balance and Churn: p-value = {p_value_balance:.4f}\n")
-        f.write(f"Chi-Square Test for Active Status and Churn: p-value = {p_value_active:.4f}\n\n")
+        f.write(f"Chi-Square Test for Active Status and Churn: p-value = {p_value_active:.4f}\n")
+        f.write(f"Chi-Square Test for Tenure and Churn: p-value = {p_value_tenure:.4f}\n")
+        f.write(f"Chi-Square Test for EstimatedSalary and Churn: p-value = {p_value_estimatedSalary:.4f}\n\n")
 
         # Conclusion
         f.write("=== Conclusions ===\n")
@@ -60,6 +72,10 @@ def run_analysis(input_csv, output_file):
         if p_value_balance < 0.05:
             f.write("Balance has a statistically significant impact on churn.\n")
         if p_value_active < 0.05:
+            f.write("Active status has a statistically significant impact on churn.\n")
+        if p_value_tenure < 0.05:
+            f.write("Active status has a statistically significant impact on churn.\n")
+        if p_value_estimatedSalary < 0.05:
             f.write("Active status has a statistically significant impact on churn.\n")
 
     print(f"Analysis results saved to {output_file}")

@@ -27,6 +27,11 @@ def create_feature_categories(df):
     labels_balance = ['Zero_Balance', 'Low_Balance', 'Medium_Balance', 'High_Balance', 'Very_High_Balance']
     df['Balance_Category'] = pd.cut(df['Balance'], bins=bins_balance, labels=labels_balance)
 
+    # Estimated Salary Categories
+    bins_salary = [0, 50000, 100000, 150000, df['EstimatedSalary'].max()]
+    labels_salary = ['Low_Salary', 'Medium_Salary', 'High_Salary', 'Very_High_Salary']
+    df['EstimatedSalary_Category'] = pd.cut(df['EstimatedSalary'], bins=bins_salary, labels=labels_salary)
+
     return df
 
 def save_transformed_data(input_csv, output_csv):
